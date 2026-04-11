@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>DriveX Motors — Drive Your Dream Car Worldwide</title>
+<meta name="description" content="DriveX Motors — Premium luxury car showroom. 100+ verified vehicles. Global delivery from Karachi, Pakistan."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+  <div class="ld-logo">Drive<em>X</em> Motors</div>
+  <div class="ld-tag">Premium Automotive · Est. 2018</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+</div>
+
+<!-- ===== OVERLAY ===== -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== SUCCESS MODAL ===== -->
+<div class="modal-wrap" id="success-modal">
+  <div class="modal">
+    <div class="modal-icon">✅</div>
+    <h3 id="modal-title">Request Sent!</h3>
+    <p id="modal-body">Your inquiry has been received. Our team will contact you shortly.</p>
+    <button class="modal-close" onclick="closeModal()">Done</button>
+  </div>
+</div>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<div class="wa-float">
+  <a href="https://wa.me/923001234567" target="_blank" class="wa-btn" title="Chat on WhatsApp">💬</a>
+</div>
+
+<!-- ===== COMPARE BAR ===== -->
+<div id="compare-bar">
+  <div class="compare-inner">
+    <div class="compare-cars" id="compare-chips"></div>
+    <div style="display:flex;gap:.6rem">
+      <button class="btn-compare" onclick="showCompareModal()">Compare Now</button>
+      <button class="btn-clear-compare" onclick="clearCompare()">Clear All</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goPage('home')">
+      <div class="nav-logo-icon">DX</div>
+      <div>
+        <div class="nav-logo-text">Drive<em>X</em> Motors</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('home')" class="active" data-p="home">Home</a>
+      <a onclick="goPage('inventory')" data-p="inventory">Inventory</a>
+      <a onclick="goPage('about')" data-p="about">About Us</a>
+      <a onclick="goPage('contact')" data-p="contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" title="Wishlist" onclick="goPage('inventory')">❤️<span class="nav-badge" id="wish-badge">0</span></button>
+      <button class="hamburger" id="hamburger" onclick="toggleMob()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mob-menu" id="mob-menu">
+    <a onclick="goPage('home');closeMob()">🏠 Home</a>
+    <a onclick="goPage('inventory');closeMob()">🚘 Inventory</a>
+    <a onclick="goPage('about');closeMob()">ℹ️ About Us</a>
+    <a onclick="goPage('contact');closeMob()">📞 Contact</a>
+  </div>
+</nav>
+
+<!-- ===================================================
+     PAGE: HOME
+     =================================================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img id="hero-img" src="https://images.pexels.com/photos/909907/pexels-photo-909907.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="DriveX Motors" loading="eager" style="transition:opacity .6s"/>
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-scan"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Premium · Verified · Global</div>
+      <h1 class="hero-h1">Drive Your<br><em>Dream Car</em><br>Worldwide</h1>
+      <p class="hero-sub">100+ Luxury Vehicles · Karachi, Pakistan · Worldwide Delivery</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="goPage('inventory')">Explore Cars →</button>
+        <button class="btn-outline-gold" onclick="goPage('about')">Our Story</button>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+    <div class="hero-stats">
+      <div><div class="hstat-num">100+</div><div class="hstat-lbl">Vehicles</div></div>
+      <div><div class="hstat-num">50+</div><div class="hstat-lbl">Brands</div></div>
+      <div><div class="hstat-num">120+</div><div class="hstat-lbl">Countries</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section id="featured" style="background:var(--bg2)">
+    <div class="sec-wrap">
+      <div class="sec-hd center rev">
+        <div class="sec-tag">Premium Selection</div>
+        <h2 class="sec-title">Featured <em>Vehicles</em></h2>
+        <p class="sec-sub">Hand-picked exclusives from the world's most prestigious marques</p>
+      </div>
+      <div class="featured-grid" id="featured-grid"></div>
+      <div style="text-align:center;margin-top:2.5rem">
+        <button class="btn-gold" onclick="goPage('inventory')">View All 100+ Cars →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="sec-wrap">
+      <div class="sec-hd center rev">
+        <div class="sec-tag">Browse</div>
+        <h2 class="sec-title">Shop by <em>Category</em></h2>
+        <p class="sec-sub">Find your perfect match across every segment</p>
+      </div>
+      <div class="cats-grid" id="cats-grid"></div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="sec-wrap">
+      <div class="sec-hd center rev">
+        <div class="sec-tag">Why DriveX</div>
+        <h2 class="sec-title">The <em>DriveX</em> Advantage</h2>
+        <p class="sec-sub">Trusted by collectors and enthusiasts across 120+ countries</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card rev rev-d1">
+          <div class="why-icon">🌍</div>
+          <div class="why-title">Global Delivery</div>
+          <div class="why-desc">We ship to 120+ countries. Full documentation, insurance, and port-to-door logistics handled by our team. No surprises, guaranteed.</div>
+        </div>
+        <div class="why-card rev rev-d2">
+          <div class="why-icon">✅</div>
+          <div class="why-title">Verified Vehicles</div>
+          <div class="why-desc">Every car undergoes 120-point inspection by certified technicians. Full service history, VIN verification, and independent appraisal included.</div>
+        </div>
+        <div class="why-card rev rev-d3">
+          <div class="why-icon">💳</div>
+          <div class="why-title">Easy Financing</div>
+          <div class="why-desc">Flexible payment plans available. Partner with 15+ international banks for competitive rates. Pre-approved in 24 hours.</div>
+        </div>
+        <div class="why-card rev rev-d4">
+          <div class="why-icon">📞</div>
+          <div class="why-title">24/7 Support</div>
+          <div class="why-desc">Dedicated account managers, WhatsApp support, video calls, and in-person showroom visits. We're with you from inquiry to delivery.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="sec-wrap">
+      <div class="sec-hd center rev">
+        <div class="sec-tag">Testimonials</div>
+        <h2 class="sec-title">What Our <em>Clients</em> Say</h2>
+        <p class="sec-sub">Real experiences from car enthusiasts around the world</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card rev rev-d1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordered a Bentley Continental GT from Dubai. The entire process was seamless — DriveX handled everything including customs and port delivery. World-class service."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar"><img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?w=100" alt="Ahmed"/></div>
+            <div><div class="reviewer-name">Ahmed Al-Rashidi</div><div class="reviewer-loc">Dubai, UAE</div></div>
+          </div>
+        </div>
+        <div class="review-card rev rev-d2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I was skeptical buying a Ferrari online but DriveX's transparency and video walkarounds convinced me. The car arrived exactly as described. Exceptional."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar"><img src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?w=100" alt="James"/></div>
+            <div><div class="reviewer-name">James Thornton</div><div class="reviewer-loc">London, UK</div></div>
+          </div>
+        </div>
+        <div class="review-card rev rev-d3">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Found my Porsche 911 GT3 here at the best price I'd seen globally. The team helped me through every detail and financing was approved within a day. Brilliant."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar"><img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?w=100" alt="Sarah"/></div>
+            <div><div class="reviewer-name">Sarah Mueller</div><div class="reviewer-loc">Munich, Germany</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section style="background:linear-gradient(135deg,rgba(212,175,55,.12) 0%,rgba(0,198,255,.06) 100%);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:4rem clamp(1rem,4vw,3rem)">
+    <div class="sec-wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem">
+      <div>
+        <div class="sec-tag">Pakistan → World</div>
+        <h2 class="sec-title" style="font-size:clamp(1.6rem,4vw,2.5rem)">Based in <em>Karachi</em><br/>Delivering <em>Everywhere</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.8rem">
+        <button class="btn-gold" onclick="goPage('inventory')" style="text-align:center">Browse Inventory →</button>
+        <button class="btn-outline-gold" onclick="goPage('contact')" style="text-align:center">Get a Quote</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- END HOME -->
+
+<!-- ===================================================
+     PAGE: INVENTORY
+     =================================================== -->
+<div id="page-inventory" class="page">
+  <div style="max-width:1280px;margin:0 auto;padding:2rem clamp(1rem,4vw,3rem) 4rem">
+    <div class="sec-hd rev">
+      <div class="sec-tag">Our Fleet</div>
+      <h2 class="sec-title">Full <em>Inventory</em></h2>
+      <p class="sec-sub">102 premium vehicles · Worldwide delivery from Karachi, Pakistan</p>
+    </div>
+    <!-- Filters -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="srch-inv" type="text" placeholder="Search by name or brand..."/>
+      </div>
+      <select class="filter-select" id="brand-filter">
+        <option value="All">All Brands</option>
+      </select>
+      <select class="filter-select" id="price-filter" onchange="filterPrice(this.value)">
+        <option value="All">All Prices</option>
+        <option value="under100k">Under $100K</option>
+        <option value="100k-250k">$100K – $250K</option>
+        <option value="250k-500k">$250K – $500K</option>
+        <option value="over500k">$500K+</option>
+      </select>
+    </div>
+    <div class="filter-tabs" id="inv-tabs">
+      <button class="ftab active" data-type="All" onclick="filterType('All')">All</button>
+      <button class="ftab" data-type="Sports" onclick="filterType('Sports')">🏎 Sports</button>
+      <button class="ftab" data-type="SUV" onclick="filterType('SUV')">🚙 SUV</button>
+      <button class="ftab" data-type="Sedan" onclick="filterType('Sedan')">🚗 Sedan</button>
+      <button class="ftab" data-type="Luxury" onclick="filterType('Luxury')">👑 Luxury</button>
+      <button class="ftab" data-type="Electric" onclick="filterType('Electric')">⚡ Electric</button>
+      <button class="ftab" data-type="Hybrid" onclick="filterType('Hybrid')">🌿 Hybrid</button>
+    </div>
+    <div id="cars-count" style="font-family:var(--font-ui);font-size:.78rem;color:var(--gray);margin-bottom:1.5rem"></div>
+    <div class="cars-grid" id="inv-grid"></div>
+    <div style="text-align:center;margin-top:3rem">
+      <button id="load-more-btn" class="btn-outline-gold" onclick="loadMore()" style="display:none;padding:.85rem 2.5rem">Load More Vehicles ↓</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================
+     PAGE: DETAIL
+     =================================================== -->
+<div id="page-detail" class="page">
+  <div class="detail-back" onclick="goBack()">← Back to Inventory</div>
+  <div class="detail-wrap">
+    <div class="detail-grid" id="detail-content"></div>
+    <div id="detail-inquiry"></div>
+    <div class="related-section">
+      <h3>More From This Brand</h3>
+      <div class="cars-grid" id="related-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================
+     PAGE: ABOUT
+     =================================================== -->
+<div id="page-about" class="page">
+  <section class="about-hero-section" style="padding:clamp(4rem,8vw,7rem) clamp(1rem,4vw,3rem)">
+    <div class="about-wrap" style="width:100%">
+      <div class="about-grid">
+        <div class="about-img rev">
+          <img src="https://images.pexels.com/photos/1104768/pexels-photo-1104768.jpeg?auto=compress&cs=tinysrgb&w=800" alt="DriveX Motors Showroom"/>
+        </div>
+        <div class="about-text rev rev-d2">
+          <div class="sec-tag">Our Story</div>
+          <h2>Redefining Automotive <em>Excellence</em></h2>
+          <p>DriveX Motors was founded in 2018 in Karachi, Pakistan, with a singular vision: to make the world's most extraordinary automobiles accessible to collectors and enthusiasts everywhere.</p>
+          <p>From our state-of-the-art showroom, we curate a selection of 100+ premium, exotic, and luxury vehicles — from everyday grand tourers to rare limited-edition hypercars worth millions.</p>
+          <p>Our global delivery network spans 120+ countries. With full documentation, transparent pricing, and dedicated specialists, we've completed over 2,000 successful transactions across six continents.</p>
+          <div class="about-milestones">
+            <div class="milestone"><div class="m-num">2000+</div><div class="m-lbl">Cars Delivered</div></div>
+            <div class="milestone"><div class="m-num">120+</div><div class="m-lbl">Countries</div></div>
+            <div class="milestone"><div class="m-num">6</div><div class="m-lbl">Years Active</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg2)">
+    <div class="sec-wrap">
+      <div class="sec-hd center rev">
+        <div class="sec-tag">Our Values</div>
+        <h2 class="sec-title">Built on <em>Trust</em></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card rev rev-d1"><div class="why-icon">🏆</div><div class="why-title">Premium Only</div><div class="why-desc">Every vehicle in our inventory meets our strict quality standards — verified history, professional inspection, no compromises.</div></div>
+        <div class="why-card rev rev-d2"><div class="why-icon">🔒</div><div class="why-title">100% Transparent</div><div class="why-desc">Full documentation, honest pricing, no hidden fees. We build relationships, not just transactions.</div></div>
+        <div class="why-card rev rev-d3"><div class="why-icon">🌐</div><div class="why-title">Global Reach</div><div class="why-desc">Our logistics partners handle everything from export permits to port delivery in your country — fully insured.</div></div>
+        <div class="why-card rev rev-d4"><div class="why-icon">👤</div><div class="why-title">Personal Service</div><div class="why-desc">Every client gets a dedicated specialist. We answer questions at 2am, arrange test drives, and celebrate your delivery day.</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================================================
+     PAGE: CONTACT
+     =================================================== -->
+<div id="page-contact" class="page">
+  <div class="contact-wrap" style="padding-top:3rem">
+    <div class="sec-hd center rev" style="margin-bottom:3rem">
+      <div class="sec-tag">Get in Touch</div>
+      <h2 class="sec-title">Contact <em>Us</em></h2>
+      <p class="sec-sub">We respond within 2 hours. Our specialists are ready.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-info rev">
+        <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.5rem);color:var(--white);margin-bottom:.8rem;letter-spacing:.04em">Let's Talk <em style="color:var(--gold)">Cars</em></h2>
+        <p>Whether you're looking for your first exotic or adding to a collection, our team is ready to help you find exactly what you're looking for.</p>
+        <div class="c-detail"><div class="c-detail-icon">📍</div><div><div class="c-detail-main">Clifton, Karachi, Sindh, Pakistan</div><div class="c-detail-sub">Showroom open Mon–Sat, 10am–8pm PKT</div></div></div>
+        <div class="c-detail"><div class="c-detail-icon">📞</div><div><div class="c-detail-main">+92 300 123 4567</div><div class="c-detail-sub">WhatsApp & Call</div></div></div>
+        <div class="c-detail"><div class="c-detail-icon">📧</div><div><div class="c-detail-main">info@drivexmotors.com</div><div class="c-detail-sub">Email support</div></div></div>
+        <div class="c-detail"><div class="c-detail-icon">🌍</div><div><div class="c-detail-main">Worldwide Delivery</div><div class="c-detail-sub">We ship to 120+ countries — fully insured</div></div></div>
+        <div class="map-placeholder">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14474.7!2d67.0205!3d24.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92a51bc8c0238!2sClifton%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="contact-form-box rev rev-d2">
+        <h3>Send a Message</h3>
+        <form onsubmit="submitContact(event)">
+          <div class="form-grid">
+            <div class="fg"><label>Full Name</label><input type="text" required placeholder="Your name"/></div>
+            <div class="fg"><label>Email</label><input type="email" required placeholder="your@email.com"/></div>
+          </div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+92 300 ..."/></div>
+          <div class="fg"><label>Subject</label>
+            <select class="filter-select" style="width:100%;padding:.78rem 1rem">
+              <option>Vehicle Inquiry</option>
+              <option>Financing Options</option>
+              <option>Import / Export</option>
+              <option>Test Drive Request</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Message</label><textarea required placeholder="Tell us what you're looking for..."></textarea></div>
+          <button type="submit" class="btn-gold" style="width:100%;padding:1rem;font-size:.9rem;clip-path:none;border-radius:6px">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer id="site-footer">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-brand-logo">
+        <div class="ft-logo-icon">DX</div>
+        <div class="ft-brand-name">Drive<em>X</em> Motors</div>
+      </div>
+      <p>Pakistan's premier luxury automotive showroom. We source, verify, and deliver the world's finest vehicles to your door — anywhere on the planet.</p>
+      <div class="ft-socials">
+        <a href="#" class="ft-soc" title="Instagram">📸</a>
+        <a href="#" class="ft-soc" title="Facebook">📘</a>
+        <a href="#" class="ft-soc" title="YouTube">📺</a>
+        <a href="#" class="ft-soc" title="LinkedIn">💼</a>
+        <a href="https://wa.me/923001234567" class="ft-soc" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="goPage('home')">Home</a></li>
+        <li><a onclick="goPage('inventory')">Inventory</a></li>
+        <li><a onclick="goPage('about')">About Us</a></li>
+        <li><a onclick="goPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a onclick="shopByType('Sports')">🏎 Sports Cars</a></li>
+        <li><a onclick="shopByType('SUV')">🚙 SUVs</a></li>
+        <li><a onclick="shopByType('Luxury')">👑 Luxury Sedans</a></li>
+        <li><a onclick="shopByType('Electric')">⚡ Electric</a></li>
+        <li><a onclick="shopByType('Hybrid')">🌿 Hybrid</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Newsletter</h4>
+      <p style="color:var(--gray);font-size:.8rem;font-weight:300;margin-bottom:.6rem">Get notified of new arrivals & exclusive deals.</p>
+      <form class="nl-form" onsubmit="submitNewsletter(event)">
+        <input class="nl-input" type="email" required placeholder="Your email..."/>
+        <button type="submit" class="nl-btn">→</button>
+      </form>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 DriveX Motors · Karachi, Pakistan · Worldwide Delivery</div>
+    <div class="ft-tagline">Luxury Automotive · Premium · Verified</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
