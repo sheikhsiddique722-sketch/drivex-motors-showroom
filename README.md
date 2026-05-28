@@ -19,7 +19,7 @@ The project features a clean user interface, smooth animations, and an engaging 
 
 ## Live Demo
 
-https://sheikhsiddique722-sketch.github.io/drivex-motors-
+ https://sheikhsiddique722-sketch.github.io/drivex-motors-showroom/
 
 ## Developer
 
