@@ -3,7 +3,7 @@
 A modern and responsive car showcase website developed using HTML, CSS, and JavaScript.
 The project features a clean user interface, smooth animations, and an engaging layout designed to provide a professional automobile browsing experience.
 
-## Features
+## Features 
    
 * Responsive design
 * Modern automotive UI
