@@ -4,7 +4,7 @@ A modern automotive showroom website built as a frontend project. **DriveX Motor
  
 The project focuses on delivering a premium digital showroom experience by combining elegant layouts, interactive sections, and responsive design. Modern automotive websites emphasize high-quality visuals, vehicle showcases, and intuitive navigation, which inspired this concept.    
 
----  
+---   
 
 ## 🌐 Live Demo    
 
